@@ -9,30 +9,8 @@ const showUser = async () => {
   userValue.textContent = "loading..."
   // récupére l'utilisateur depuis l'api
   const person = await fetchUser()
-  const { results } = { ...person }
-  const {
-    phone,
-    name: { first, last },
-    email,
-    location: {
-      street: { number, name: way },
-    },
-    dob: { age },
-    login: { password },
-    picture: { large: picture },
-  } = results[0]
-  const name = `${first} ${last}`
-  const street = `${number} ${way}`
-  displayUser({
-    phone,
-    name,
-    email,
-    number,
-    street,
-    age,
-    password,
-    picture,
-  })
+
+  displayUser(person)
   // affiche l'utilisateur
 }
 

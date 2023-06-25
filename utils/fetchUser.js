@@ -9,7 +9,30 @@ const fetchUser = async () => {
       throw new Error(`HTTP response error: ${response.status}`)
     }
     const data = await response.json()
-    return data
+    const { results } = { ...data }
+    const {
+      phone,
+      name: { first, last },
+      email,
+      location: {
+        street: { number, name: way },
+      },
+      dob: { age },
+      login: { password },
+      picture: { large: picture },
+    } = results[0]
+    const name = `${first} ${last}`
+    const street = `${number} ${way}`
+    return {
+      phone,
+      name,
+      email,
+      number,
+      street,
+      age,
+      password,
+      picture,
+    }
   } catch (error) {
     console.log(error)
   }

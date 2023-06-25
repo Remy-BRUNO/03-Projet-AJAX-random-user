@@ -28,4 +28,3 @@ const displayUser = (person) => {
   })
 }
 export default displayUser
-// si je fait un tableau de label
